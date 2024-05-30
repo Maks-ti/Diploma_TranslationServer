@@ -61,7 +61,7 @@ class Program
 
         _queueHandlerTask = Task.Run(async () => await ProcessMessages(cancellationTokenSource.Token));
 
-        Console.WriteLine("Server started on ws://localhost:8181");
+        // Console.WriteLine("Server started on ws://localhost:8181");
         Console.ReadLine(); // Держим консоль открытой
         
         cancellationTokenSource.Cancel();

@@ -35,6 +35,7 @@ namespace TranslationServer
         {
             _httpListener.Start();
             Console.WriteLine("Server started. Listening for requests...");
+            Console.WriteLine($"Actual urls: {string.Join(",", _httpListener.Prefixes)}");
 
             while (!token.IsCancellationRequested)
             {
@@ -66,6 +67,9 @@ namespace TranslationServer
                     // чтение тела запроса
                     requestBody = await reader.ReadToEndAsync();
                 }
+
+                // Debug
+                Console.WriteLine($"прилетел запрос с requestBody = \n{requestBody}");
 
                 // Десериализация JSON-RPC запроса
                 RpcRequest? rpcRequest = JsonConvert.DeserializeObject<RpcRequest>(requestBody);
